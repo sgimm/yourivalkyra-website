@@ -2,7 +2,7 @@ const images = {
   "IMG-01": { label: "Home hero · desktop", ratio: "16/9" },
   "IMG-02": { label: "Home hero · mobile", ratio: "9/16" },
   "IMG-03": { label: "Neon Shoreline cover artwork with Youri beside a neon-lit Miami shoreline", ratio: "1/1", file: "IMG-03.png" },
-  "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "4/5", file: "IMG-04.png" },
+  "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "9/16", file: "IMG-04.png" },
   "IMG-05": { label: "Youri · music / performance", ratio: "16/9" },
   "IMG-06": { label: "Valkyra Universe · establishing scene", ratio: "21/9" },
   "IMG-07": { label: "Red Reborn · approved portrait", ratio: "4/5" },
