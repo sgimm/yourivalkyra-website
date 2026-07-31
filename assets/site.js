@@ -4,7 +4,10 @@ const images = {
   "IMG-03": { label: "Neon Shoreline cover artwork with Youri beside a neon-lit Miami shoreline", ratio: "1/1", file: "IMG-03.png" },
   "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "9/16", file: "IMG-04.png" },
   "IMG-05": { label: "Youri · music / performance", ratio: "16/9" },
-  "IMG-06": { label: "Valkyra Universe · establishing scene", ratio: "21/9" },
+  "IMG-06A": { label: "Beach Club", ratio: "21/9" },
+  "IMG-06B": { label: "Canal District", ratio: "21/9" },
+  "IMG-06C": { label: "Rooftop Residence", ratio: "21/9" },
+  "IMG-06D": { label: "Night Store", ratio: "21/9" },
   "IMG-07": { label: "Red Reborn · approved portrait", ratio: "4/5" },
   "IMG-08": { label: "Aris Voss · approved portrait", ratio: "4/5" },
   "IMG-09": { label: "Valkyra · abstract signal", ratio: "4/5" },
@@ -30,6 +33,53 @@ class YVImage extends HTMLElement {
   }
 }
 customElements.define("yv-image", YVImage);
+class YVCarousel extends HTMLElement {
+  connectedCallback() {
+    const slides = ["IMG-06A", "IMG-06B", "IMG-06C", "IMG-06D"];
+    const id = `carousel-${Math.random().toString(36).slice(2)}`;
+    this.innerHTML = `<div class="universe-carousel" role="region" aria-roledescription="carousel" aria-label="Places in the Valkyra Universe">
+      <div class="carousel-viewport" id="${id}" tabindex="0">${slides.map((key, index) => `<article class="carousel-slide" aria-roledescription="slide" aria-label="${index + 1} of ${slides.length}: ${images[key].label}"><yv-image asset="${key}"></yv-image><span class="slide-location">${images[key].label}</span></article>`).join("")}</div>
+      <div class="carousel-controls"><div class="carousel-arrows"><button type="button" class="carousel-arrow previous" aria-label="Previous place">←</button><button type="button" class="carousel-arrow next" aria-label="Next place">→</button></div><div class="carousel-dots" aria-label="Choose a place">${slides.map((key, index) => `<button type="button" aria-label="Show ${images[key].label}" aria-controls="${id}"${index === 0 ? ' aria-current="true"' : ""}></button>`).join("")}</div><p class="carousel-count" aria-live="polite"><span>01</span> / 04</p></div>
+    </div>`;
+    const viewport = this.querySelector(".carousel-viewport");
+    const slideElements = [...this.querySelectorAll(".carousel-slide")];
+    const dots = [...this.querySelectorAll(".carousel-dots button")];
+    const count = this.querySelector(".carousel-count span");
+    let current = 0;
+    const update = index => {
+      current = (index + slideElements.length) % slideElements.length;
+      dots.forEach((dot, dotIndex) => dot.toggleAttribute("aria-current", dotIndex === current));
+      count.textContent = String(current + 1).padStart(2, "0");
+    };
+    const goTo = index => {
+      const next = (index + slideElements.length) % slideElements.length;
+      slideElements[next].scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest", inline: "start" });
+      update(next);
+    };
+    this.querySelector(".previous").addEventListener("click", () => goTo(current - 1));
+    this.querySelector(".next").addEventListener("click", () => goTo(current + 1));
+    dots.forEach((dot, index) => dot.addEventListener("click", () => goTo(index)));
+    viewport.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight" || event.key === "Home" || event.key === "End") {
+        event.preventDefault();
+        if (event.key === "ArrowLeft") goTo(current - 1);
+        if (event.key === "ArrowRight") goTo(current + 1);
+        if (event.key === "Home") goTo(0);
+        if (event.key === "End") goTo(slideElements.length - 1);
+      }
+    });
+    let frame;
+    viewport.addEventListener("scroll", () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const left = viewport.getBoundingClientRect().left;
+        const nearest = slideElements.reduce((best, slide, index) => Math.abs(slide.getBoundingClientRect().left - left) < best.distance ? { index, distance: Math.abs(slide.getBoundingClientRect().left - left) } : best, { index: 0, distance: Infinity });
+        update(nearest.index);
+      });
+    }, { passive: true });
+  }
+}
+customElements.define("yv-carousel", YVCarousel);
 const links = [["/","Home"],["/youri/","Youri"],["/music/","Music"],["/universe/","Valkyra Universe"],["/gallery/","Gallery"],["/support/","Support"]];
 class SiteHeader extends HTMLElement {
   connectedCallback() {
