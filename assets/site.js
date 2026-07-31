@@ -1,7 +1,12 @@
 const images = {
   "IMG-01": { label: "Home hero · desktop", ratio: "16/9" },
   "IMG-02": { label: "Home hero · mobile", ratio: "9/16" },
-  "IMG-03": { label: "Neon Shoreline cover artwork with Youri beside a neon-lit Miami shoreline", ratio: "1/1", file: "IMG-03.png" },
+  "IMG-03A": { label: "Neon Shoreline official cover artwork", ratio: "1/1", file: "IMG-03A.png" },
+  "IMG-03B": { label: "Valkyra Line official cover artwork", ratio: "1/1", file: "IMG-03B.png" },
+  "IMG-03C": { label: "Only Signal Deep Touch official cover artwork", ratio: "1/1", file: "IMG-03C.png" },
+  "IMG-03D": { label: "Only Signal official cover artwork", ratio: "1/1", file: "IMG-03D.png" },
+  "IMG-03E": { label: "Neon Runtime official cover artwork", ratio: "1/1", file: "IMG-03E.png" },
+  "IMG-03F": { label: "Neon of Broken Dreams official cover artwork", ratio: "1/1", file: "IMG-03F.png" },
   "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "9/16", file: "IMG-04.png" },
   "IMG-05": { label: "Youri · music / performance", ratio: "16/9" },
   "IMG-06A": { label: "Beach Club", ratio: "21/9" },
