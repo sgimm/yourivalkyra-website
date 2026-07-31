@@ -1,8 +1,8 @@
 const images = {
   "IMG-01": { label: "Home hero · desktop", ratio: "16/9" },
   "IMG-02": { label: "Home hero · mobile", ratio: "9/16" },
-  "IMG-03": { label: "Current release cover", ratio: "1/1" },
-  "IMG-04": { label: "Youri · main portrait", ratio: "4/5" },
+  "IMG-03": { label: "Neon Shoreline cover artwork with Youri beside a neon-lit Miami shoreline", ratio: "1/1", file: "IMG-03.png" },
+  "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "4/5", file: "IMG-04.png" },
   "IMG-05": { label: "Youri · music / performance", ratio: "16/9" },
   "IMG-06": { label: "Valkyra Universe · establishing scene", ratio: "21/9" },
   "IMG-07": { label: "Red Reborn · approved portrait", ratio: "4/5" },
@@ -23,8 +23,8 @@ class YVImage extends HTMLElement {
     const key = innerWidth < 600 && this.dataset.mobileAsset ? this.dataset.mobileAsset : this.getAttribute("asset");
     const item = images[key];
     if (!item) return;
-    const src = `/assets/images/${key}.webp`;
-    this.innerHTML = `<div class="placeholder" style="--ratio:${item.ratio}" role="img" aria-label="Reserved image: ${item.label}">
+    const src = `/assets/images/${item.file || `${key}.webp`}`;
+    this.innerHTML = `<div class="placeholder" style="--ratio:${item.ratio}" role="img" aria-label="${item.label}">
       <img src="${src}" alt="${item.label}" loading="${key === "IMG-01" || key === "IMG-02" ? "eager" : "lazy"}" onerror="this.remove()">
       <span class="placeholder-label"><b>${key}</b>${item.label}</span></div>`;
   }
