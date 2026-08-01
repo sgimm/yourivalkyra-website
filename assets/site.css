@@ -16,6 +16,7 @@ footer{border-top:1px solid var(--line);padding:3rem 0;color:var(--muted);font-s
 
 /* Canonical Valkyra V, fitted to the visible cap height of Arial Narrow Bold. */
 .valkyra-wordmark{display:inline-block;white-space:nowrap}
+.valkyra-wordmark--home{display:inline-flex;align-items:baseline;vertical-align:baseline}
 .valkyra-v-glyph{display:inline-block;width:.582em;height:.718em;margin-right:-.025em;vertical-align:-.015em}
 .valkyra-v-glyph img{display:block;width:100%;height:100%}
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
