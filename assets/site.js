@@ -44,16 +44,14 @@ class YVCarousel extends HTMLElement {
     const id = `carousel-${Math.random().toString(36).slice(2)}`;
     this.innerHTML = `<div class="universe-carousel" role="region" aria-roledescription="carousel" aria-label="Places in the Valkyra Universe">
       <div class="carousel-viewport" id="${id}" tabindex="0">${slides.map((key, index) => `<article class="carousel-slide" aria-roledescription="slide" aria-label="${index + 1} of ${slides.length}: ${images[key].label}"><yv-image asset="${key}"></yv-image><span class="slide-location">${images[key].label}</span></article>`).join("")}</div>
-      <div class="carousel-controls"><div class="carousel-arrows"><button type="button" class="carousel-arrow previous" aria-label="Previous place">←</button><button type="button" class="carousel-arrow next" aria-label="Next place">→</button></div><div class="carousel-dots" aria-label="Choose a place">${slides.map((key, index) => `<button type="button" aria-label="Show ${images[key].label}" aria-controls="${id}"${index === 0 ? ' aria-current="true"' : ""}></button>`).join("")}</div><p class="carousel-count" aria-live="polite"><span>01</span> / 04</p></div>
+      <div class="carousel-controls"><p class="carousel-count" aria-live="polite"><span>01</span> / 04</p><div class="carousel-arrows"><button type="button" class="carousel-arrow previous" aria-label="Previous place">←</button><button type="button" class="carousel-arrow next" aria-label="Next place">→</button></div></div>
     </div>`;
     const viewport = this.querySelector(".carousel-viewport");
     const slideElements = [...this.querySelectorAll(".carousel-slide")];
-    const dots = [...this.querySelectorAll(".carousel-dots button")];
     const count = this.querySelector(".carousel-count span");
     let current = 0;
     const update = index => {
       current = (index + slideElements.length) % slideElements.length;
-      dots.forEach((dot, dotIndex) => dot.toggleAttribute("aria-current", dotIndex === current));
       count.textContent = String(current + 1).padStart(2, "0");
     };
     const goTo = index => {
@@ -63,7 +61,6 @@ class YVCarousel extends HTMLElement {
     };
     this.querySelector(".previous").addEventListener("click", () => goTo(current - 1));
     this.querySelector(".next").addEventListener("click", () => goTo(current + 1));
-    dots.forEach((dot, index) => dot.addEventListener("click", () => goTo(index)));
     viewport.addEventListener("keydown", event => {
       if (event.key === "ArrowLeft" || event.key === "ArrowRight" || event.key === "Home" || event.key === "End") {
         event.preventDefault();
