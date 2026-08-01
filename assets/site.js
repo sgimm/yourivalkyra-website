@@ -99,7 +99,15 @@ class SiteFooter extends HTMLElement {
 customElements.define("site-footer", SiteFooter);
 
 function applyValkyraHeadlineGlyphs() {
+  const approvedHeadlines = new Set([
+    "Youri Valkyra",
+    "Fragments of the Valkyra Universe",
+    "Valkyra Universe"
+  ]);
+
   document.querySelectorAll("h1, h2, h3").forEach(heading => {
+    if (!approvedHeadlines.has(heading.textContent.trim())) return;
+
     [...heading.childNodes].forEach(node => {
       if (node.nodeType !== Node.TEXT_NODE || !node.nodeValue.includes("Valkyra")) return;
       const parts = node.nodeValue.split("Valkyra");
