@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "images": "node scripts/optimize-images.mjs",
-    "predeploy": "npm run images",
+    "build": "npm run images && node scripts/build-site.mjs",
     "deploy": "wrangler deploy"
   },
   "devDependencies": {
