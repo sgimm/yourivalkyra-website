@@ -99,11 +99,13 @@ class SiteFooter extends HTMLElement {
 customElements.define("site-footer", SiteFooter);
 
 function applyValkyraHeadlineGlyphs() {
-  const approvedHeadlines = new Set([
-    "Youri Valkyra",
-    "Fragments of the Valkyra Universe",
-    "Valkyra Universe"
-  ]);
+  const approvedHeadlinesByPage = {
+    "/": new Set(["Youri Valkyra", "Fragments of the Valkyra Universe"]),
+    "/youri/": new Set(["Youri Valkyra"]),
+    "/universe/": new Set(["Valkyra Universe"])
+  };
+  const approvedHeadlines = approvedHeadlinesByPage[location.pathname];
+  if (!approvedHeadlines) return;
 
   document.querySelectorAll("h1, h2, h3").forEach(heading => {
     if (!approvedHeadlines.has(heading.textContent.trim())) return;
