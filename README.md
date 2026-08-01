@@ -5,6 +5,7 @@ Static website deployed through the existing Cloudflare Worker assets configurat
 ## Local preview
 
 ```sh
+npm run build
 npx wrangler dev
 ```
 
@@ -35,7 +36,10 @@ The Valkyra Universe carousel uses four wide images: `IMG-06A.webp` through
 npm run deploy
 ```
 
-The deploy command runs image optimization before Wrangler. Wrangler serves the
-resulting static assets; it does not transform source images itself.
+Wrangler runs `npm run build` before each deployment. The build optimizes approved
+image sources and copies only the public website files into `dist/`. Wrangler
+uploads that directory exclusively, so dependencies, source files and repository
+metadata are never treated as website assets. Wrangler serves the generated static
+assets; it does not transform source images itself.
 
 The canonical production domain is `https://yourivalkyra.com`.
