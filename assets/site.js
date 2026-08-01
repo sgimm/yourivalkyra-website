@@ -116,10 +116,10 @@ function applyValkyraHeadlineGlyphs() {
       const fragment = document.createDocumentFragment();
       parts.forEach((part, index) => {
         if (index) {
-          const glyph = document.createElement("span");
-          glyph.className = "valkyra-v-glyph";
-          glyph.innerHTML = '<span class="visually-hidden">V</span><img src="/assets/valkyra-v-bold.svg" alt="" aria-hidden="true">';
-          fragment.append(glyph, document.createTextNode("alkyra"));
+          const wordmark = document.createElement("span");
+          wordmark.className = "valkyra-wordmark";
+          wordmark.innerHTML = '<span class="valkyra-v-glyph"><span class="visually-hidden">V</span><img src="/assets/valkyra-v-bold.svg" alt="" aria-hidden="true"></span>alkyra';
+          fragment.append(wordmark);
         }
         fragment.append(document.createTextNode(part));
       });
