@@ -97,3 +97,24 @@ class SiteFooter extends HTMLElement {
   connectedCallback(){this.innerHTML=`<footer><div class="wrap"><div class="footer-grid"><a class="brand" href="/">YOURI VALKYRA</a><div class="footer-links"><a href="/imprint/">Imprint</a><a href="/privacy/">Privacy</a></div></div><p class="license">© 2026 Youri Valkyra. The Youri Valkyra character and Valkyra universe are privately owned intellectual property and are used by Nexus Bit UG (haftungsbeschränkt) under license. Draft wording—subject to legal review.</p></div></footer>`}
 }
 customElements.define("site-footer", SiteFooter);
+
+function applyValkyraHeadlineGlyphs() {
+  document.querySelectorAll("h1, h2, h3").forEach(heading => {
+    [...heading.childNodes].forEach(node => {
+      if (node.nodeType !== Node.TEXT_NODE || !node.nodeValue.includes("Valkyra")) return;
+      const parts = node.nodeValue.split("Valkyra");
+      const fragment = document.createDocumentFragment();
+      parts.forEach((part, index) => {
+        if (index) {
+          const glyph = document.createElement("span");
+          glyph.className = "valkyra-v-glyph";
+          glyph.innerHTML = '<span class="visually-hidden">V</span><img src="/assets/valkyra-v-bold.svg" alt="" aria-hidden="true">';
+          fragment.append(glyph, document.createTextNode("alkyra"));
+        }
+        fragment.append(document.createTextNode(part));
+      });
+      node.replaceWith(fragment);
+    });
+  });
+}
+applyValkyraHeadlineGlyphs();
