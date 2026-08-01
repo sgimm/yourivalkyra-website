@@ -1,0 +1,14 @@
+{
+  "name": "yourivalkyra-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "images": "node scripts/optimize-images.mjs",
+    "predeploy": "npm run images",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.3",
+    "wrangler": "^4.27.0"
+  }
+}
