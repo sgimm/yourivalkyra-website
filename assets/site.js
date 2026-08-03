@@ -1,15 +1,15 @@
 const images = {
   "IMG-01": { label: "Home hero · desktop", ratio: "16/9" },
   "IMG-02": { label: "Home hero · mobile", ratio: "9/16" },
-  "IMG-03A": { label: "Neon of Broken Dreams official cover artwork", ratio: "1/1" },
-  "IMG-03B": { label: "Neon Runtime official cover artwork", ratio: "1/1" },
-  "IMG-03C": { label: "Only Signal official cover artwork", ratio: "1/1" },
-  "IMG-03D": { label: "Only Signal Deep Touch official cover artwork", ratio: "1/1" },
-  "IMG-03E": { label: "Valkyra Line official cover artwork", ratio: "1/1" },
-  "IMG-03F": { label: "Neon Shoreline official cover artwork", ratio: "1/1" },
-  "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "9/16" },
+  "IMG-03A": { label: "Neon of Broken Dreams official cover artwork", ratio: "1/1", file: "IMG-03A.webp" },
+  "IMG-03B": { label: "Neon Runtime official cover artwork", ratio: "1/1", file: "IMG-03B.webp" },
+  "IMG-03C": { label: "Only Signal official cover artwork", ratio: "1/1", file: "IMG-03C.webp" },
+  "IMG-03D": { label: "Only Signal Deep Touch official cover artwork", ratio: "1/1", file: "IMG-03D.webp" },
+  "IMG-03E": { label: "Valkyra Line official cover artwork", ratio: "1/1", file: "IMG-03E.webp" },
+  "IMG-03F": { label: "Neon Shoreline official cover artwork", ratio: "1/1", file: "IMG-03F.webp" },
+  "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "9/16", file: "IMG-04.webp" },
   "IMG-05": { label: "Youri · music / performance", ratio: "16/9" },
-  "IMG-06A": { label: "Beach Club", ratio: "21/9" },
+  "IMG-06A": { label: "Beach Club", ratio: "21/9", file: "IMG-06A.webp" },
   "IMG-06B": { label: "Canal District", ratio: "21/9" },
   "IMG-06C": { label: "Rooftop Residence", ratio: "21/9" },
   "IMG-06D": { label: "Night Store", ratio: "21/9" },
@@ -31,9 +31,11 @@ class YVImage extends HTMLElement {
     const key = innerWidth < 600 && this.dataset.mobileAsset ? this.dataset.mobileAsset : this.getAttribute("asset");
     const item = images[key];
     if (!item) return;
-    const src = `/assets/images/${item.file || `${key}.webp`}`;
+    const image = item.file
+      ? `<img src="/assets/images/${item.file}" alt="${item.label}" loading="${key === "IMG-01" || key === "IMG-02" ? "eager" : "lazy"}">`
+      : "";
     this.innerHTML = `<div class="placeholder" style="--ratio:${item.ratio}" role="img" aria-label="${item.label}">
-      <img src="${src}" alt="${item.label}" loading="${key === "IMG-01" || key === "IMG-02" ? "eager" : "lazy"}" onerror="this.remove()">
+      ${image}
       <span class="placeholder-label"><b>${key}</b>${item.label}</span></div>`;
   }
 }
