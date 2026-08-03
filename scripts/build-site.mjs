@@ -4,6 +4,7 @@ import path from "node:path";
 const outputDir = path.resolve("dist");
 const publicFiles = [
   "index.html",
+  "favicon.ico",
   "robots.txt",
   "sitemap.xml",
   "assets",
