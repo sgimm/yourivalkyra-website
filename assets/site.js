@@ -8,7 +8,7 @@ const images = {
   "IMG-03E": { label: "Valkyra Line official cover artwork", ratio: "1/1", file: "IMG-03E.webp" },
   "IMG-03F": { label: "Neon Shoreline official cover artwork", ratio: "1/1", file: "IMG-03F.webp" },
   "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "9/16", file: "IMG-04.webp" },
-  "IMG-05": { label: "Youri · music / performance", ratio: "16/9" },
+  "IMG-05": { label: "Youri singing and moving across an underground stage", ratio: "16/9", file: "IMG-05.webp" },
   "IMG-06A": { label: "Beach Club", ratio: "21/9", file: "IMG-06A.webp" },
   "IMG-06B": { label: "Canal District", ratio: "21/9" },
   "IMG-06C": { label: "Rooftop Residence", ratio: "21/9" },
