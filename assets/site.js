@@ -88,7 +88,7 @@ const links = [["/","Home"],["/youri/","Youri"],["/music/","Music"],["/universe/
 class SiteHeader extends HTMLElement {
   connectedCallback() {
     const path = location.pathname;
-    this.innerHTML = `<header><div class="nav wrap"><a class="brand" href="/">YOURI VALKYRA <small>詠理</small></a><button class="menu" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav">${links.map(([url,name])=>`<a href="${url}"${path===url?' aria-current="page"':""}>${name}</a>`).join("")}</nav></div></header>`;
+    this.innerHTML = `<header><div class="nav wrap"><a class="brand" href="/">YOURI VALKYRA <small>詠理</small></a><button class="menu" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav">${links.map(([url,name])=>`<a href="${url}"${path===url||(url!=="/"&&path.startsWith(url))?' aria-current="page"':""}>${name}</a>`).join("")}</nav></div></header>`;
     const button=this.querySelector(".menu"),nav=this.querySelector("nav");
     button.addEventListener("click",()=>{const open=nav.classList.toggle("open");button.setAttribute("aria-expanded",open)});
     const header=this.querySelector("header"); addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>20),{passive:true});
