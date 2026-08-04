@@ -96,7 +96,7 @@ class SiteHeader extends HTMLElement {
 }
 customElements.define("site-header", SiteHeader);
 class SiteFooter extends HTMLElement {
-  connectedCallback(){this.innerHTML=`<footer><div class="wrap"><div class="footer-grid"><a class="brand" href="/">YOURI VALKYRA</a><div class="footer-links"><a href="/imprint/">Imprint</a><a href="/privacy/">Privacy</a></div></div><p class="license">© 2026 Youri Valkyra. The Youri Valkyra character and Valkyra universe are privately owned intellectual property and are used by Nexus Bit UG (haftungsbeschränkt) under license. Draft wording—subject to legal review.</p></div></footer>`}
+  connectedCallback(){this.innerHTML=`<footer><div class="wrap"><div class="footer-grid"><a class="brand" href="/">YOURI VALKYRA</a><div class="footer-links"><a href="mailto:youri@yourivalkyra.com">youri@yourivalkyra.com</a><a href="/imprint/">Imprint</a><a href="/privacy/">Privacy</a></div></div><p class="license">© 2026 Youri Valkyra. The Youri Valkyra character and Valkyra universe are privately owned intellectual property and are used by Nexus Bit UG (haftungsbeschränkt) under license. Draft wording—subject to legal review.</p></div></footer>`}
 }
 customElements.define("site-footer", SiteFooter);
 
