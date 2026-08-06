@@ -24,3 +24,7 @@ footer{border-top:1px solid var(--line);padding:3rem 0;color:var(--muted);font-s
 .valkyra-v-glyph img{display:block;width:100%;height:100%}
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .youtube-link-icon{display:inline-block;flex:none;width:34px;height:24px;background:url('/assets/youtube-icon-red.png') -8.9px -10.3px/52px 44.6px no-repeat}
+
+.channel-callouts{padding:0}.channel-callout-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}.channel-callout{display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:1fr auto;align-items:center;gap:2rem;padding:3.5rem 2rem;background:var(--panel)}.channel-icon{display:block;width:96px;height:82px;object-fit:contain}.channel-icon--discord{height:72px;fill:#5865f2}.channel-callout h2{font-size:clamp(2.2rem,3.3vw,3.5rem);margin-bottom:.2em}.channel-callout p:not(.eyebrow){margin:0;color:var(--muted)}.channel-callout .button{grid-column:1/-1;justify-self:start;white-space:nowrap}
+@media(max-width:900px){.channel-callout-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.channel-callout{grid-template-columns:1fr}.channel-callout .button{grid-column:auto}}
