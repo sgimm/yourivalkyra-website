@@ -1,4 +1,30 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gallery — Youri Valkyra</title><meta name="description" content="Selected artwork from Youri Valkyra and the Valkyra Universe."><link rel="canonical" href="https://yourivalkyra.com/gallery/"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.js"></script></head><body><a class="skip" href="#main">Skip to content</a><site-header></site-header><main id="main">
 <section class="page-intro"><div class="wrap"><p class="eyebrow">Selected visions</p><h1>Gallery</h1><p>A curated space for music-video artwork, character art, locations and moments from the world.</p></div></section>
-<section class="section wrap"><div class="gallery-grid"><yv-image asset="IMG-19"></yv-image><yv-image asset="IMG-20"></yv-image><yv-image asset="IMG-10"></yv-image><yv-image asset="IMG-11"></yv-image><yv-image asset="IMG-12"></yv-image><yv-image asset="IMG-13"></yv-image><yv-image asset="IMG-14"></yv-image><yv-image asset="IMG-15"></yv-image><yv-image asset="IMG-16"></yv-image><yv-image asset="IMG-17"></yv-image></div><p class="status">More approved artwork will be added over time.</p></section>
+<section class="section wrap"><div class="gallery-grid"><yv-image class="gallery-zoomable" asset="IMG-19" tabindex="0" role="button" aria-label="Open full-size artwork: Youri by the rain-lit window" data-full-src="/assets/images/IMG-19.webp" data-full-alt="Youri Valkyra sitting thoughtfully by a rain-lit window"></yv-image><yv-image class="gallery-zoomable" asset="IMG-20" tabindex="0" role="button" aria-label="Open full-size artwork: Youri resting on her bed" data-full-src="/assets/images/IMG-20.webp" data-full-alt="Youri Valkyra resting on her bed beneath violet city light"></yv-image><yv-image asset="IMG-10"></yv-image><yv-image asset="IMG-11"></yv-image><yv-image asset="IMG-12"></yv-image><yv-image asset="IMG-13"></yv-image><yv-image asset="IMG-14"></yv-image><yv-image asset="IMG-15"></yv-image><yv-image asset="IMG-16"></yv-image><yv-image asset="IMG-17"></yv-image></div><p class="status">More approved artwork will be added over time.</p></section>
+<dialog class="gallery-lightbox" aria-label="Full-size gallery artwork"><button class="gallery-lightbox-close" type="button" aria-label="Close full-size artwork">×</button><img alt=""></dialog>
+<script>
+  const lightbox = document.querySelector(".gallery-lightbox");
+  const lightboxImage = lightbox.querySelector("img");
+  const openArtwork = artwork => {
+    lightboxImage.src = artwork.dataset.fullSrc;
+    lightboxImage.alt = artwork.dataset.fullAlt;
+    lightbox.showModal();
+  };
+  document.querySelectorAll(".gallery-zoomable").forEach(artwork => {
+    artwork.addEventListener("click", () => openArtwork(artwork));
+    artwork.addEventListener("keydown", event => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openArtwork(artwork);
+    });
+  });
+  lightbox.querySelector(".gallery-lightbox-close").addEventListener("click", () => lightbox.close());
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) lightbox.close();
+  });
+  lightbox.addEventListener("close", () => {
+    lightboxImage.removeAttribute("src");
+    lightboxImage.alt = "";
+  });
+</script>
 </main><site-footer></site-footer></body></html>
