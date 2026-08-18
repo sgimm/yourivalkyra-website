@@ -25,7 +25,7 @@ const images = {
   "IMG-15": { label: "Gallery · selected artwork 06", ratio: "3/2" },
   "IMG-16": { label: "Gallery · selected artwork 07", ratio: "1/1" },
   "IMG-17": { label: "Gallery · selected artwork 08", ratio: "16/9" },
-  "IMG-18": { label: "Support · studio / worldbuilding", ratio: "3/2" }
+  "IMG-18": { label: "Youri Valkyra creating music and character artwork in her home studio", ratio: "3/2", file: "IMG-18.webp" }
 };
 class YVImage extends HTMLElement {
   connectedCallback() {
