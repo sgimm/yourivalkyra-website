@@ -8,6 +8,8 @@ const images = {
   "IMG-03E": { label: "Valkyra Line official cover artwork", ratio: "1/1", file: "IMG-03E.webp" },
   "IMG-03F": { label: "Neon Shoreline official cover artwork", ratio: "1/1", file: "IMG-03F.webp" },
   "IMG-03G": { label: "Neon Shadow official cover artwork", ratio: "1/1", file: "IMG-03G.webp" },
+  "IMG-03H": { label: "Shamisen in the Dark official cover artwork", ratio: "1/1", file: "IMG-03H.webp" },
+  "IMG-03I": { label: "One World One Signal official cover artwork", ratio: "1/1", file: "IMG-03I.webp" },
   "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "9/16", file: "IMG-04.webp" },
   "IMG-05": { label: "Youri singing and moving across an underground stage", ratio: "16/9", file: "IMG-05.webp" },
   "IMG-06A": { label: "Beach Club", ratio: "21/9", file: "IMG-06A.webp" },
@@ -17,11 +19,11 @@ const images = {
   "IMG-07": { label: "Red Reborn · approved portrait", ratio: "4/5" },
   "IMG-08": { label: "Aris Voss · approved portrait", ratio: "4/5" },
   "IMG-09": { label: "Valkyra · abstract signal", ratio: "4/5" },
-  "IMG-10": { label: "Gallery · selected artwork 01", ratio: "3/2" },
-  "IMG-11": { label: "Gallery · selected artwork 02", ratio: "4/5" },
-  "IMG-12": { label: "Gallery · selected artwork 03", ratio: "1/1" },
-  "IMG-13": { label: "Gallery · selected artwork 04", ratio: "16/9" },
-  "IMG-14": { label: "Gallery · selected artwork 05", ratio: "4/5" },
+  "IMG-10": { label: "Youri overlooking the city from a hilltop railing at sunset", ratio: "16/9", file: "IMG-10.webp" },
+  "IMG-11": { label: "Youri dance-walking along a rain-lit neon promenade", ratio: "16/9", file: "IMG-11.webp" },
+  "IMG-12": { label: "Youri checking her phone beside violet-lit vending machines", ratio: "16/9", file: "IMG-12.webp" },
+  "IMG-13": { label: "Youri sitting on a wooden pier beneath a crescent moon", ratio: "16/9", file: "IMG-13.webp" },
+  "IMG-14": { label: "Youri walking along a neon-lit beach at night", ratio: "16/9", file: "IMG-14.webp" },
   "IMG-15": { label: "Gallery · selected artwork 06", ratio: "3/2" },
   "IMG-16": { label: "Gallery · selected artwork 07", ratio: "1/1" },
   "IMG-17": { label: "Gallery · selected artwork 08", ratio: "16/9" },
@@ -29,6 +31,7 @@ const images = {
   "IMG-19": { label: "Youri Valkyra sitting thoughtfully by a rain-lit window", ratio: "3/2", file: "IMG-19.webp" },
   "IMG-20": { label: "Youri Valkyra resting on her bed beneath violet city light", ratio: "3/2", file: "IMG-20.webp" }
 };
+const galleryImageKeys = ["IMG-10", "IMG-11", "IMG-12", "IMG-13", "IMG-14", "IMG-19", "IMG-20"];
 class YVImage extends HTMLElement {
   connectedCallback() {
     const key = innerWidth < 600 && this.dataset.mobileAsset ? this.dataset.mobileAsset : this.getAttribute("asset");
@@ -43,6 +46,16 @@ class YVImage extends HTMLElement {
   }
 }
 customElements.define("yv-image", YVImage);
+class YVGalleryPreview extends HTMLElement {
+  connectedCallback() {
+    const selection = [...galleryImageKeys]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+    this.classList.add("gallery-strip", "wrap");
+    this.innerHTML = selection.map(key => `<yv-image asset="${key}"></yv-image>`).join("");
+  }
+}
+customElements.define("yv-gallery-preview", YVGalleryPreview);
 class YVCarousel extends HTMLElement {
   connectedCallback() {
     const slides = ["IMG-06A", "IMG-06B", "IMG-06C", "IMG-06D"];
