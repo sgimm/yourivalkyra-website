@@ -10,6 +10,8 @@ const images = {
   "IMG-03G": { label: "Neon Shadow official cover artwork", ratio: "1/1", file: "IMG-03G.webp" },
   "IMG-03H": { label: "Shamisen in the Dark official cover artwork", ratio: "1/1", file: "IMG-03H.webp" },
   "IMG-03I": { label: "One World One Signal official cover artwork", ratio: "1/1", file: "IMG-03I.webp" },
+  "IMG-03J": { label: "One World One Signal Sakura Half Cut official cover artwork", ratio: "1/1", file: "IMG-03J.webp" },
+  "IMG-03K": { label: "One World One Signal Sakura Full Cut official cover artwork", ratio: "1/1", file: "IMG-03K.webp" },
   "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "9/16", file: "IMG-04.webp" },
   "IMG-05": { label: "Youri singing and moving across an underground stage", ratio: "16/9", file: "IMG-05.webp" },
   "IMG-06A": { label: "Beach Club", ratio: "21/9", file: "IMG-06A.webp" },
