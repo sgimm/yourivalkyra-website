@@ -12,6 +12,7 @@ const images = {
   "IMG-03I": { label: "One World One Signal official cover artwork", ratio: "1/1", file: "IMG-03I.webp" },
   "IMG-03J": { label: "One World One Signal Sakura Half Cut official cover artwork", ratio: "1/1", file: "IMG-03J.webp" },
   "IMG-03K": { label: "One World One Signal Sakura Full Cut official cover artwork", ratio: "1/1", file: "IMG-03K.webp" },
+  "IMG-03L": { label: "The Night Knows Every Language Pt. 1 official cover artwork", ratio: "1/1", file: "IMG-03L.webp" },
   "IMG-04": { label: "Youri Valkyra in dark cyberpunk streetwear in a rain-lit neon alley", ratio: "9/16", file: "IMG-04.webp" },
   "IMG-05": { label: "Youri singing and moving across an underground stage", ratio: "16/9", file: "IMG-05.webp" },
   "IMG-06A": { label: "Beach Club", ratio: "21/9", file: "IMG-06A.webp" },
