@@ -35,3 +35,17 @@ footer{border-top:1px solid var(--line);padding:3rem 0;color:var(--muted);font-s
 .signal-hub-callout .button{white-space:nowrap}
 @media(max-width:760px){.signal-hub-callout-inner{grid-template-columns:117px 1fr}.signal-hub-callout .button{grid-column:1/-1;justify-self:start}}
 @media(max-width:480px){.signal-hub-callout-inner{grid-template-columns:1fr}.signal-hub-callout .button{grid-column:auto}}
+
+/* Game demo: keep the screenshot intact and the download widget responsive. */
+.game-section{border-top:1px solid var(--line);background:radial-gradient(ellipse at 90% 80%,#41123b40,transparent 60%);scroll-margin-top:84px}
+.game-preview{margin:2rem 0}
+.game-preview a{display:block}
+.game-preview img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.game-preview figcaption{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+.game-details{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,552px);gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.game-details h3{font-size:clamp(1.6rem,3vw,2.2rem)}
+.game-details p{color:var(--muted)}
+.game-download{min-width:0}
+.game-download iframe{display:block;width:100%;max-width:552px;height:167px;border:0}
+.game-section a:focus-visible{outline:2px solid var(--cyan);outline-offset:5px}
+@media(max-width:900px){.game-details{grid-template-columns:minmax(0,1fr)}}
